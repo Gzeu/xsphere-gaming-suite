@@ -4,20 +4,33 @@
   "description": "Multi-game blockchain gaming platform on MultiversX",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
+    "dev": "cd frontend && next dev",
+    "build": "cd frontend && next build",
+    "start": "cd frontend && next start",
+    "lint": "cd frontend && next lint",
+    "export": "cd frontend && next export",
+    "analyze": "cd frontend && ANALYZE=true npm run build",
+    "optimize": "node scripts/optimize-build.js",
+    "optimize:analyze": "node scripts/optimize-build.js --analyze",
+    "deploy:vercel": "vercel --prod",
+    "deploy:preview": "vercel",
+    "deploy:github": "npm run build && npm run export && gh-pages -d frontend/out",
     "contract:build": "mxpy contract build contracts/",
     "contract:test": "mxpy contract test contracts/",
     "contract:deploy": "npm run deploy:devnet",
     "deploy:devnet": "mxpy contract deploy --bytecode=contracts/output/xsphere-core.wasm --pem=wallet.pem --gas-limit=20000000 --proxy=https://devnet-gateway.multiversx.com --chain=D",
     "deploy:testnet": "mxpy contract deploy --bytecode=contracts/output/xsphere-core.wasm --pem=wallet.pem --gas-limit=20000000 --proxy=https://testnet-gateway.multiversx.com --chain=T",
     "setup:env": "mxpy deps install",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test": "cd frontend && jest",
+    "test:watch": "cd frontend && jest --watch",
+    "test:coverage": "cd frontend && jest --coverage",
+    "lighthouse": "lighthouse https://xsphere-gaming-suite.vercel.app --view",
+    "perf:audit": "npm run lighthouse && npm run analyze",
+    "setup:project": "npm install && npm run setup:env",
+    "clean": "rm -rf frontend/.next frontend/out node_modules/.cache",
+    "postinstall": "chmod +x scripts/optimize-build.js"
   },
-  "keywords": [
+  "keywords [
     "blockchain",
     "gaming",
     "nft",
@@ -28,7 +41,10 @@
     "react",
     "typescript",
     "smart-contracts",
-    "rust"
+    "rust",
+    "vercel",
+    "deployment",
+    "free-tier"
   ],
   "author": "George Pricop <pricopgeorge@gmail.com>",
   "license": "MIT",
@@ -60,7 +76,13 @@
     "@testing-library/react": "^14.0.0",
     "@testing-library/jest-dom": "^6.0.0",
     "autoprefixer": "^10.4.0",
-    "postcss": "^8.4.0"
+    "postcss": "^8.4.0",
+    "@next/bundle-analyzer": "^15.0.0",
+    "lighthouse": "^11.0.0",
+    "gh-pages": "^6.0.0",
+    "imagemin": "^8.0.0",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^9.0.0"
   },
   "engines": {
     "node": ">=20.0.0",
@@ -73,5 +95,9 @@
   "bugs": {
     "url": "https://github.com/Gzeu/xsphere-gaming-suite/issues"
   },
-  "homepage": "https://github.com/Gzeu/xsphere-gaming-suite#readme"
+  "homepage": "https://xsphere-gaming-suite.vercel.app",
+  "funding": {
+    "type": "individual",
+    "url": "https://github.com/sponsors/Gzeu"
+  }
 }
