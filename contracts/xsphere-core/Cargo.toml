@@ -1,0 +1,11 @@
+[package]
+name = "xsphere-core"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+multiversx-sc = "0.62.0"
+multiversx-sc-modules = "0.62.0"
+
+[dev-dependencies]
+multiversx-sc-scenario = "0.62.0"
