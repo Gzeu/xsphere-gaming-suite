@@ -1,0 +1,77 @@
+{
+  "name": "xsphere-gaming-suite",
+  "version": "0.1.0",
+  "description": "Multi-game blockchain gaming platform on MultiversX",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "contract:build": "mxpy contract build contracts/",
+    "contract:test": "mxpy contract test contracts/",
+    "contract:deploy": "npm run deploy:devnet",
+    "deploy:devnet": "mxpy contract deploy --bytecode=contracts/output/xsphere-core.wasm --pem=wallet.pem --gas-limit=20000000 --proxy=https://devnet-gateway.multiversx.com --chain=D",
+    "deploy:testnet": "mxpy contract deploy --bytecode=contracts/output/xsphere-core.wasm --pem=wallet.pem --gas-limit=20000000 --proxy=https://testnet-gateway.multiversx.com --chain=T",
+    "setup:env": "mxpy deps install",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "keywords": [
+    "blockchain",
+    "gaming",
+    "nft",
+    "multiversx",
+    "web3",
+    "defi",
+    "gamefi",
+    "react",
+    "typescript",
+    "smart-contracts",
+    "rust"
+  ],
+  "author": "George Pricop <pricopgeorge@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@multiversx/sdk-core": "^13.0.0",
+    "@multiversx/sdk-dapp": "^5.0.0",
+    "@multiversx/sdk-wallet": "^4.0.0",
+    "@multiversx/sdk-network-providers": "^2.0.0",
+    "next": "^14.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "typescript": "^5.0.0",
+    "tailwindcss": "^3.4.0",
+    "framer-motion": "^10.0.0",
+    "lucide-react": "^0.263.0",
+    "zustand": "^4.4.0",
+    "axios": "^1.5.0",
+    "react-query": "^3.39.0",
+    "bignumber.js": "^9.1.0",
+    "moment": "^2.29.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "eslint": "^8.50.0",
+    "eslint-config-next": "^14.0.0",
+    "jest": "^29.0.0",
+    "@testing-library/react": "^13.0.0",
+    "@testing-library/jest-dom": "^6.0.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Gzeu/xsphere-gaming-suite.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Gzeu/xsphere-gaming-suite/issues"
+  },
+  "homepage": "https://github.com/Gzeu/xsphere-gaming-suite#readme"
+}
